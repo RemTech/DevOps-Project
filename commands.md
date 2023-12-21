@@ -1,7 +1,3 @@
-- ### Project-Name: Docker CI/CD pipeline build and workflow ###
-- Author:
-- Date:
-- Version:
 
 ### Commands to run the services ###
 ------------------------------------
@@ -26,5 +22,5 @@
 ### Docker commands for interactive mysql client ###
 ----------------------------------------------------
 - To use the interactive mysql session,
-> - [x] Run this command `docker run -it --rm --network <network-name> ubuntu/mysql:8.0-22.04_beta mysql -h<container-name> -uroot -p`
+> - [x] Run command `docker run -it --rm --network <network-name> ubuntu/mysql:8.0-22.04_beta mysql -h<container-name> -uroot -p`
 > - [x] The password will be asked and you can enter `My:S3cr3t/`
