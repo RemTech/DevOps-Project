@@ -1,0 +1,81 @@
+version: '2.2'
+
+name: 'cicd_project'
+
+services:
+
+  # docker jenkins-server
+  jenkins-server:
+    container_name: jenkins-server
+    image: remtech/dev_jenkins:1.1
+    volumes:
+      - data:/opt/data
+    networks:
+      - cicdnetwork
+    expose:
+      - 22
+      - 50000
+    ports:
+      - 5000:8080
+
+  # docker ssh-jenkins_agent_1
+  jenkins-agent-1:
+    container_name: jenkins-agent-1
+    build:
+      context: ../docker-agents/ssh-agent-1
+      dockerfile: Dockerfile
+    depends_on:
+      - jenkins-server
+    volumes:
+      - data:/opt/agent_1
+    networks:
+      - cicdnetwork
+    expose:
+      - 22
+    ports:
+      - 1000:22
+
+  # docker ssh-jenkins_agent_2
+  jenkins-agent-2:
+    container_name: jenkins-agent-2
+    build:
+      context: ../docker-agents/ssh-agent-2
+      dockerfile: Dockerfile
+    depends_on:
+      - jenkins-server
+    volumes:
+      - data:/opt/agent_2
+    networks:
+      - cicdnetwork
+    expose:
+      - 22
+    ports:
+      - 22:22
+
+  # docker mysql-database
+  # MYSQL_URL=jdbc:mysql://ubuntu-mysql/docker_cicd
+  ubuntu-mysql:
+    container_name: ubuntu-mysql
+    build:
+      context: ../mysql-db/
+      dockerfile: Dockerfile
+    volumes:
+      - mysqlData:/var/lib/mysql
+      - mysqlConfig:/etc/mysql/conf.d
+    networks:
+      - cicdnetwork
+    expose:
+      - 3306
+      - 22
+    ports:
+      - 3030:3306
+
+networks:
+  cicdnetwork:
+
+volumes:
+  data:
+  mysqlData:
+  mysqlConfig:
+
+
