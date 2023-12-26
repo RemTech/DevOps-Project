@@ -25,6 +25,9 @@
 > - [x] Run command `docker run -it --rm --network <network-name> ubuntu/mysql:8.0-22.04_beta mysql -h<container-name> -uroot -p`
 > - [x] The password will be asked and you can enter `My:S3cr3t/`
 
-### Starting docker engine on your computer ###
+#### Starting docker engine on your computer ####
 -----------------------------------------------
-- [x] `pwsh docker-script.ps1 `
+- To Set-Execution policy error on your system, run the below command
+> - [x] `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
+- Optionally run this command on you cli to start docker
+> - [x] `pwsh docker-script.ps1 `
