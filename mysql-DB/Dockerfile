@@ -12,7 +12,3 @@ ENV MYSQL_ROOT_PASSWORD=root \
     
 #VOLUME [ "/data/mysql:/var/lib/mysql" ]
 EXPOSE 3306 22
-
-
-
-
