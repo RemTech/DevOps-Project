@@ -7,8 +7,8 @@
 
 | Author  |  *Oluwaremilekun Osisanya* |
 |:-------:| :---------:|
-| **Project** |  *Docker hosted CI/CD infrastructure* |
-| **Version** |  *v1.0* | 
+| **Project** |  ***Docker hosted CI/CD infrastructure*** |
+| **Version** |  ***v1.0*** | 
 
 ---------------------------------------------------------------
 
