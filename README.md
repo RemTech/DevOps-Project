@@ -7,11 +7,13 @@
 
 | Author  |  *Oluwaremilekun Osisanya* |
 |:-------:| :---------:|
-| Project |  *docker hosted CI/CD infrastructure* |
+| Project |  *Docker hosted CI/CD infrastructure* |
+|:-------:| :---------:|
 | Version |  *v1.0* | 
+|:-------:| :---------:|
 ---------------------------------------------------------------
 
-[docker](./asset/docker-reimg.png)
+![Docker](./asset/docker-reimg.png)
 
 - [X] Project to locally host a full fledge CI/CD infrastructure on docker.
 - [x] You can start the services by following the [commands](./commands.md) file of the application
