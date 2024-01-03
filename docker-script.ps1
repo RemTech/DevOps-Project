@@ -36,7 +36,8 @@ if ($dockerFolder) {
    Invoke-Expression -Command $input_command | Write-Host -ForegroundColor Yellow | Format-Table -Wrap
     }
   } 
-}elseif (!$dockerFolder) {
+}
+elseif (!$dockerFolder) {
   Write-Host -Object "You may have installed docker in another directory which is not C:\Program Files" -ForegroundColor DarkYellow
 }
 else{
