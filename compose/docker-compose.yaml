@@ -1,13 +1,14 @@
-version: '2.2'
+version: '2.3'
 
-name: 'cicd_project'
+
+name: 'jenkins-sonarqube'
 
 services:
 
   # docker jenkins-server
-  jenkins-server:
-    container_name: jenkins-server
-    image: remtech/dev_jenkins:1.1
+  jenkins-server-sonar:
+    container_name: jenkins-server-sonar
+    image: jenkins/jenkins:lts-jdk17
     volumes:
       - data:/opt/data
     networks:
@@ -20,12 +21,12 @@ services:
 
   # docker ssh-jenkins_agent_1
   jenkins-agent-1:
-    container_name: jenkins-agent-1
+    container_name: jenkins-agent-sonar-1
     build:
       context: ../docker-agents/ssh-agent-1
       dockerfile: Dockerfile
     depends_on:
-      - jenkins-server
+      - jenkins-server-sonar
     volumes:
       - data:/opt/agent_1
     networks:
@@ -37,12 +38,12 @@ services:
 
   # docker ssh-jenkins_agent_2
   jenkins-agent-2:
-    container_name: jenkins-agent-2
+    container_name: jenkins-agent-sonar-2
     build:
       context: ../docker-agents/ssh-agent-2
       dockerfile: Dockerfile
     depends_on:
-      - jenkins-server
+      - jenkins-server-sonar
     volumes:
       - data:/opt/agent_2
     networks:
@@ -54,8 +55,8 @@ services:
 
   # docker mysql-database
   # MYSQL_URL=jdbc:mysql://ubuntu-mysql/docker_cicd
-  ubuntu-mysql:
-    container_name: ubuntu-mysql
+  ubuntu-mysql-sonar:
+    container_name: ubuntu-mysql-sonar
     build:
       context: ../mysql-db/
       dockerfile: Dockerfile
@@ -68,14 +69,55 @@ services:
       - 3306
       - 22
     ports:
-      - 3030:3306
+      - 30306:3306
+
+  #jdbc:postgresql://postgres-sql-server/sonar
+  postgres-sql-server:
+    container_name: postgres-sql-server
+    build:
+      context: ../postgres-sql/
+      dockerfile: Dockerfile
+    volumes:
+      -  postgresql:/var/lib/postgresql
+      -  postgresql_data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+      - 9090:8080
+    networks:
+      - cicdnetwork
+  
+  sonar-qube-server:
+    container_name: sonar-qube-server
+    depends_on:
+      - postgres-sql-server
+    build:
+      context: ../sonar-cube/
+      dockerfile: Dockerfile
+    volumes:
+     - sonarqube_data:/opt/sonarqube/data  
+     - sonarqube_extensions:/opt/sonarqube/extensions
+     - sonarqube_logs:/opt/sonarqube/logs
+    expose:
+      - 9000
+    ports:
+      - "9000:9000"  
+    networks:
+    - cicdnetwork
 
 networks:
   cicdnetwork:
+
 
 volumes:
   data:
   mysqlData:
   mysqlConfig:
+  postgresql:
+  postgresql_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
 
 
