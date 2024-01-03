@@ -109,7 +109,6 @@ services:
 networks:
   cicdnetwork:
 
-
 volumes:
   data:
   mysqlData:
