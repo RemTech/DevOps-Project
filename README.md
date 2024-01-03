@@ -16,11 +16,11 @@
 
 |        Services                     | Downloads   |
 | :---------------------------------: | :-------------: |
-| ![Docker](./asset/docker-reimg.png) | [Docker-Download]("https://www.docker.com/products/docker-desktop/") |
-| ![Jenkins](./asset/jenkins.png) | [Jenkins-Download]("https://www.jenkins.io") |
-| ![MySQL](./asset/mysql.png) | [MySQL-Download]("https://dev.mysql.com/downloads/") |
-| ![PostgreSQL](./asset/postgresSQL.png) | [PostgreSQL-Download]("https://www.postgresql.org/download/") |
-| ![SonarQube](./asset/sonarqube.png) | [SonarQube-Download]("https://www.sonarsource.com/products/sonarqube/downloads/") |
+| ![Docker](./asset/docker-reimg.png) | [Docker-Download](https://www.docker.com/products/docker-desktop/) |
+| ![Jenkins](./asset/jenkins.png) | [Jenkins-Download](https://www.jenkins.io) |
+| ![MySQL](./asset/mysql.png) | [MySQL-Download](https://dev.mysql.com/downloads/) |
+| ![PostgreSQL](./asset/postgresSQL.png) | [PostgreSQL-Download](https://www.postgresql.org/download/) |
+| ![SonarQube](./asset/sonarqube.png) | [SonarQube-Download](https://www.sonarsource.com/products/sonarqube/downloads/) |
 
 
 - [X] Project to locally host a full fledge CI/CD infrastructure on docker.
